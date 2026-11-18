@@ -4,7 +4,7 @@ OpenAI's sign-in rules over [`mountainash-auth-client`](../mountainash-auth-clie
 
 It holds what is OpenAI's and nobody else's: the sign-in endpoints and scopes (including the plan permission `chatgpt.tokens.use.direct`), PKCE, client registration, the identity-token checks, the refresh refusals that will not pass, and the subscription route's facts. It builds no model client: each application builds its own from `ROUTE`.
 
-Status: alpha. The sign-in rules come from kleene-server's proof of concept, qualified live on `gpt-6-luna` on 2026-10-19. This package's own sign-in has been tested against a stand-in for OpenAI, not live.
+Status: alpha. The sign-in rules come from kleene-server's proof of concept, qualified live on `gpt-6-luna` on 2026-10-19. This package was checked live on 2026-11-18: a browser sign-in with plan usage enabled, a forced refresh through its identity checks, and one streamed reply from `gpt-6-luna` on the subscription route. The tests run against a stand-in for OpenAI.
 
 ## Sign in once
 
@@ -38,7 +38,7 @@ The call returns the selected account's access token, refreshing it first when i
 
 A refused account stays refused, without asking OpenAI again, until someone signs it in again.
 
-To build a client on the subscription route, read `ROUTE`: `base_url` (`https://api.openai.com/v1`, the Responses API), `stream=True` and `store=False` are required; `max_output_tokens` and `temperature` are refused; `response.completed` can carry an empty `output`, so read items from `response.output_item.done`. To read a refusal from that route, `classify(code, status)` gives `Refusal.USAGE_LIMIT`, `PERMISSION`, `SIGN_IN` or `OTHER`, and `reason(refusal)` the person-facing text.
+To build a client on the subscription route, read `ROUTE`: `base_url` (`https://api.openai.com/v1`, the Responses API), `stream=True` and `store=False` are required; `input` must be a list of items, not a string; `max_output_tokens` and `temperature` are refused; `response.completed` can carry an empty `output`, so read items from `response.output_item.done`. To read a refusal from that route, `classify(code, status)` gives `Refusal.USAGE_LIMIT`, `PERMISSION`, `SIGN_IN` or `OTHER`, and `reason(refusal)` the person-facing text.
 
 ## Where credentials are kept
 

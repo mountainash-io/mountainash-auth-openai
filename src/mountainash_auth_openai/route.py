@@ -16,6 +16,7 @@ class SubscriptionRoute:
     store: bool = False                           # the route needs `store=false`
     accepts_output_token_cap: bool = False        # `max_output_tokens` is refused
     accepts_temperature: bool = False             # `temperature` is refused
+    accepts_string_input: bool = False            # `input` must be a list of items; a string gets 400 "Input must be a list" (2026-11-18)
     # `response.completed` can carry an empty `output`: read the items from `response.output_item.done`.
     completed_output_may_be_empty: bool = True
 
