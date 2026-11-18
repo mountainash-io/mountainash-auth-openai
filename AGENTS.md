@@ -17,7 +17,7 @@ OpenAI's sign-in rules over `mountainash-auth-client`. Read `README.md` first.
 
 ## Planning
 
-The requirements are §4.1 (CRED-1 to CRED-12) of the approved design in hiivmind-central, `04.planning/hiivmind-agent-core/superpowers/specs/2026-11-18-agent-core-model-provider-credentials-design.md`. This package has no planning project in mountainash-central yet.
+Design principles and planning live in **mountainash-central** (beside this checkout): principles in `01.principles/mountainash-auth-openai/` (read them before changing a boundary), the backlog in `04.planning/mountainash-auth-openai/a.backlog/INDEX.md`, and the design (requirements CRED-1 to CRED-12) in `04.planning/mountainash-auth-openai/superpowers/specs/2026-11-18-mountainash-auth-openai-design.md`. Save new specs and plans there, not in this repository.
 
 ## Checks
 

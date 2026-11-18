@@ -60,4 +60,4 @@ uv run pytest
 uv run ruff check src tests
 ```
 
-Design: hiivmind-central, `04.planning/hiivmind-agent-core/superpowers/specs/2026-11-18-agent-core-model-provider-credentials-design.md`, §4.1 (CRED-1 to CRED-12).
+Design, principles and backlog: mountainash-central, `04.planning/mountainash-auth-openai/` and `01.principles/mountainash-auth-openai/`.
