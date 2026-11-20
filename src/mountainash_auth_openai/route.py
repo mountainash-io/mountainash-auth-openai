@@ -17,6 +17,7 @@ class SubscriptionRoute:
     accepts_output_token_cap: bool = False        # `max_output_tokens` is refused
     accepts_temperature: bool = False             # `temperature` is refused
     accepts_string_input: bool = False            # `input` must be a list of items; a string gets 400 "Input must be a list" (2026-11-18)
+    accepts_system_messages: bool = False         # a `system` input item gets 400 "System messages are not allowed": send the text as `instructions` (2026-11-21)
     # `response.completed` can carry an empty `output`: read the items from `response.output_item.done`.
     completed_output_may_be_empty: bool = True
 
