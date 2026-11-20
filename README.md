@@ -38,7 +38,7 @@ The call returns the selected account's access token, refreshing it first when i
 
 A refused account stays refused, without asking OpenAI again, until someone signs it in again.
 
-To build a client on the subscription route, read `ROUTE`: `base_url` (`https://api.openai.com/v1`, the Responses API), `stream=True` and `store=False` are required; `input` must be a list of items, not a string; a `system` message is refused, so the system text goes as `instructions`; `max_output_tokens` and `temperature` are refused; `response.completed` can carry an empty `output`, so read items from `response.output_item.done`. To read a refusal from that route, `classify(code, status)` gives `Refusal.USAGE_LIMIT`, `PERMISSION`, `SIGN_IN` or `OTHER`, and `reason(refusal)` the person-facing text.
+To build a client on the subscription route, read `ROUTE`: `base_url` (`https://api.openai.com/v1`, the Responses API), `stream=True` and `store=False` are required; `input` must be a list of items, not a string; a `system` message is refused, so the system text goes as `instructions`; a function tool without `strict` is strict, so the model fills every property, optional ones too, unless the tool says `strict: false`; `max_output_tokens` and `temperature` are refused; `response.completed` can carry an empty `output`, so read items from `response.output_item.done`. To read a refusal from that route, `classify(code, status)` gives `Refusal.USAGE_LIMIT`, `PERMISSION`, `SIGN_IN` or `OTHER`, and `reason(refusal)` the person-facing text.
 
 ## Where credentials are kept
 
